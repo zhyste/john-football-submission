@@ -1,0 +1,31 @@
+[project]
+name = "more-than-a-hack-2027"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "catboost>=1.2.10",
+    "kloppy==3.18.0",
+    "matplotlib>=3.11.2",
+    "notebook>=7.6.3",
+    "numpy>=2.4.6",
+    "onnxruntime==1.31.1",
+    "opencv-contrib-python==5.0.0.93",
+    "opencv-python==5.0.0.93",
+    "pandas>=3.1.0",
+    "rtmlib==0.0.16",
+    "torch==2.15.0",
+]
+
+# CUDA build of PyTorch on Windows and Linux (training on an NVIDIA GPU; it also runs on CPU).
+# macOS keeps the PyPI build (Apple GPU / CPU).
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu132", marker = "sys_platform == 'win32' or sys_platform == 'linux'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu132"
+url = "https://download.pytorch.org/whl/cu132"
+explicit = true
